@@ -1,0 +1,65 @@
+# Common configuration for all profiles
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: dev  # Default active profile
+  config:
+    import: optional:configserver:${CONFIG_SERVER_URL:http://config-server:8888}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+server:
+  port: ${SERVER_PORT:8081}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://eureka-server:8761/eureka}
+
+# Development profile configuration
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: dev
+#  datasource:
+#    url: jdbc:postgresql://${DB_HOST:postgres}:${DB_PORT:5432}/${DB_NAME:userdb}
+#    username: ${DB_USERNAME:admin}
+#    password: ${DB_PASSWORD:admin@123}
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+
+#logging:
+#  level:
+#    org.springframework: INFO
+#    com.yourcompany.userservice: DEBUG
+
+#user:
+#  test:
+#    property: ${USER_TEST_PROPERTY:dev-value}
+#
+## Production profile configuration
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: prod
+#  datasource:
+#    url: jdbc:postgresql://${DB_HOST:postgres}:${DB_PORT:5432}/${DB_NAME:postgres}
+#    username: ${DB_USERNAME:admin}
+#    password: ${DB_PASSWORD:admin@123}
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+#
+#logging:
+#  level:
+#    root: WARN
+#    com.yourcompany.userservice: INFO
+#
+#user:
+#  test:
+#    property: ${USER_TEST_PROPERTY:prod-value}

@@ -1,0 +1,52 @@
+#server:
+#  port: 8080
+#
+#spring:
+#  application:
+#    name: api-gateway
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
+#      routes:
+#        - id: user-service
+#          uri: lb://user-service
+#          predicates:
+#            - Path=/users/**
+#          filters:
+#            - RewritePath=/users/(?<segment>.*), /${segment}
+#  config:
+#    import: optional:configserver:http://localhost:8888
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service
+          uri: http://127.0.0.1:8081  # Point directly to localhost for testing
+          predicates:
+            - Path=/users/**
+          filters:
+            - RewritePath=/users/(?<segment>.*), /${segment}
+  config:
+    import: optional:configserver:http://127.0.0.1:8888
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/

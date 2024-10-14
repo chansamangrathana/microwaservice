@@ -1,0 +1,20 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:postgresql://postgres:5432/postgres
+    username: admin
+    password: admin@123
+  jpa:
+    hibernate:
+      ddl-auto: validate
+server:
+  port: 8081
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka/
+user:
+  test:
+    property: prod-value

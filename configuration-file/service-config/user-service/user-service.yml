@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: user-service
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+user:
+  test:
+    property: initial-value

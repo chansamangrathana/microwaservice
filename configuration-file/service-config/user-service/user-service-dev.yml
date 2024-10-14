@@ -1,0 +1,42 @@
+# spring:
+#   config:
+#     activate:
+#       on-profile: prod
+#   datasource:
+#     url: jdbc:postgresql://postgres:5432/postgres
+#     username: admin
+#     password: admin@123
+#   jpa:
+#     hibernate:
+#       ddl-auto: validate
+# server:
+#   port: 8081
+# eureka:
+#   client:
+#     serviceUrl:
+#       defaultZone: http://eureka-server:8761/eureka/
+# user:
+#   test:
+#     property: prod-value
+spring:
+  # config:
+  #   activate:
+  #     on-profile: dev
+  datasource:
+    url: jdbc:postgresql://postgres:5432/userdb
+    username: admin
+    password: admin@123
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8081
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka
+user:
+  test:
+    property: dev-value    
